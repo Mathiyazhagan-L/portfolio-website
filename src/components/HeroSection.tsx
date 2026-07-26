@@ -87,7 +87,10 @@ export default function HeroSection() {
           </a>
 
           <a
-            href="#contact"
+            href="/Mresume.pdf"
+            download="Mathiyazhagan_L_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-secondary-spec inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs hover:scale-105 transition-transform"
           >
             <Download className="w-3.5 h-3.5 text-slate-900" />
