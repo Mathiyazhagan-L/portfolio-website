@@ -17,9 +17,9 @@ html {
   scroll-behavior: auto;
 }
 
-/* UNIFIED BACKGROUND (redbg.jpg) */
+/* UNIFIED BACKGROUND (whitebg.jpg) */
 body {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.12), rgba(15, 23, 42, 0.12)), url('/redbg.jpg');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.08)), url('/whitebg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
