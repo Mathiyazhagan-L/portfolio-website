@@ -1,26 +1,210 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --text-primary: #10103B;
+    --navy-primary: #10103B;
+    --accent-taupe: #3B507D;
   }
 }
 
+@theme {
+  --color-navy: #10103B;
+  --color-[#3B507D]: #3B507D;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+/* UNIFIED BACKGROUND (whitebg.jpg remains exactly identical in both Light and Dark mode) */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: linear-gradient(rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.08)), url('/whitebg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', 'Geist', 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  transition: color 0.4s ease;
+}
+
+/* LIGHT MODE TEXT & CARDS */
+html:not(.dark) body {
+  color: #10103B;
+}
+
+/* DARK MODE TEXT & CARDS */
+html.dark body {
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3B507D;
+}
+
+/* Primary Button */
+.btn-primary-spec {
+  background-color: #10103B;
+  color: #FFFFFF;
+  font-weight: 700;
+  transition: all 0.25s ease-in-out;
+  border: 1px solid #10103B;
+}
+html.dark .btn-primary-spec {
+  background-color: #FFFFFF !important;
+  color: #10103B !important;
+  border: 1px solid #FFFFFF !important;
+}
+.btn-primary-spec:hover {
+  background-color: #1E293B;
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px -2px rgba(15, 23, 42, 0.2);
+  transform: translateY(-2px);
+}
+html.dark .btn-primary-spec:hover {
+  background-color: #F1F5F9 !important;
+  color: #10103B !important;
+}
+
+/* Secondary Button */
+.btn-secondary-spec {
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #10103B;
+  border: 1px solid rgba(16, 16, 59, 0.2);
+  font-weight: 600;
+  transition: all 0.25s ease-in-out;
+}
+html.dark .btn-secondary-spec {
+  background-color: #FFFFFF !important;
+  color: #10103B !important;
+  border: 1px solid #FFFFFF !important;
+}
+.btn-secondary-spec:hover {
+  background-color: #FFFFFF;
+  border-color: #10103B;
+  color: #10103B;
+  transform: translateY(-2px);
+}
+html.dark .btn-secondary-spec:hover {
+  background-color: #F1F5F9 !important;
+  border-color: #FFFFFF !important;
+  color: #10103B !important;
+}
+
+/* Glassmorphic Cards */
+.spec-card {
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #10103B;
+  border: 1px solid rgba(16, 16, 59, 0.12);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html.dark .spec-card {
+  background-color: rgba(16, 16, 59, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+}
+.spec-card:hover {
+  border-color: rgba(16, 16, 59, 0.3);
+  background-color: rgba(255, 255, 255, 0.96);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+}
+html.dark .spec-card:hover {
+  border-color: #FFFFFF;
+  background-color: rgba(16, 16, 59, 0.98);
+}
+
+/* DARK MODE GLOBAL TEXT COLOR OVERRIDES */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #FFFFFF !important;
+}
+
+html.dark p,
+html.dark li,
+html.dark label {
+  color: #F8FAFC !important;
+}
+
+/* Force all text inside dark spec-card in Dark Mode to be PURE WHITE */
+html.dark .spec-card,
+html.dark .spec-card *,
+html.dark .spec-card div,
+html.dark .spec-card span,
+html.dark .spec-card p,
+html.dark .spec-card h1,
+html.dark .spec-card h2,
+html.dark .spec-card h3,
+html.dark .spec-card h4 {
+  color: #FFFFFF !important;
+}
+
+/* Force white buttons & pills in Dark Mode to have Navy Blue text & icons */
+html.dark .btn-primary-spec,
+html.dark .btn-secondary-spec,
+html.dark a.btn-primary-spec,
+html.dark a.btn-secondary-spec,
+html.dark .marquee-pill,
+html.dark .spec-card .bg-white\/60,
+html.dark .spec-card .bg-white\/70,
+html.dark .spec-card .bg-white\/80,
+html.dark .spec-card .bg-slate-900 {
+  background-color: #FFFFFF !important;
+  color: #10103B !important;
+  border-color: #FFFFFF !important;
+}
+
+html.dark .btn-primary-spec *,
+html.dark .btn-secondary-spec *,
+html.dark a.btn-primary-spec *,
+html.dark a.btn-secondary-spec *,
+html.dark .marquee-pill *,
+html.dark .spec-card .bg-white\/60 *,
+html.dark .spec-card .bg-white\/70 *,
+html.dark .spec-card .bg-white\/80 *,
+html.dark .spec-card .bg-slate-900 *,
+html.dark .spec-card .bg-white\/70 span,
+html.dark .spec-card .bg-white\/70 div,
+html.dark .spec-card .bg-white\/70 svg,
+html.dark .spec-card .bg-slate-900 span,
+html.dark .spec-card .bg-slate-900 div,
+html.dark .spec-card .bg-slate-900 svg {
+  color: #10103B !important;
+  stroke: #10103B !important;
+}
+
+/* Clean text colors in Light Mode */
+html:not(.dark) header nav a,
+html:not(.dark) header nav a span,
+html:not(.dark) header nav a svg,
+html:not(.dark) header button,
+html:not(.dark) header button span,
+html:not(.dark) header button svg,
+html:not(.dark) header span {
+  color: #10103B !important;
+  stroke: #10103B !important;
 }
