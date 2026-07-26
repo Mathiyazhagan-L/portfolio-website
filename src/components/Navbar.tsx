@@ -80,18 +80,18 @@ export default function Navbar() {
         </a>
 
         {/* NAVIGATION (Centered) */}
-        <nav className="hidden md:flex items-center gap-1 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-1 rounded-full border border-slate-300 dark:border-slate-700 shadow-sm">
+        <nav className="hidden md:flex items-center gap-0.5 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md p-1 rounded-full border border-slate-300 dark:border-slate-700 shadow-md">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
               <a
                 key={item.label}
                 href={item.href}
-                className="relative flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#10103B] dark:text-slate-200 hover:text-[#10103B] dark:hover:text-white transition-colors group"
+                className="relative flex items-center gap-1 px-2.5 lg:px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[#10103B] dark:text-white hover:text-[#10103B] dark:hover:text-white transition-colors group shrink-0"
               >
-                <Icon className="w-3.5 h-3.5 text-[#10103B] dark:text-slate-300 group-hover:text-[#10103B] dark:group-hover:text-white transition-colors" />
-                <span className="font-bold">{item.label}</span>
-                <span className="absolute bottom-0.5 left-3.5 right-3.5 h-0.5 bg-[#10103B] dark:bg-white rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                <Icon className="w-3.5 h-3.5 text-[#10103B] dark:text-slate-200 shrink-0" />
+                <span className="font-extrabold whitespace-nowrap text-[#10103B] dark:text-white">{item.label}</span>
+                <span className="absolute bottom-0.5 left-2.5 right-2.5 h-0.5 bg-[#10103B] dark:bg-white rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
               </a>
             );
           })}
